@@ -14,7 +14,8 @@ server.set('view engine', 'njk')
 // o template engine (views)
 nunjucks.configure('views', {
     express: server,
-    autoescape: false
+    autoescape: false,
+    noCache: true
 })
 
 //pegar do server a / e retonar uma função com requisição e resposta  
@@ -29,19 +30,35 @@ server.get('/', function (req, res) {
         role: "Estudante - Rocketseat",
         description: 'Desenvolvedor web fullstack em aprendizagem. Aluno da <a href="http://rocketseat.com.br" target="_blank">Rocketseat</a>',
         links: [
-            {name: "Github", url: "https://github.com/rellyso/"},
-            {name: "Twitter", url: "https://twitter.com/rellyson1/"},
-            {name: "Linkedin", url: "https://linkedin.com/in/rellyson-douglas/"}
+            { name: "Github", url: "https://github.com/rellyso/" },
+            { name: "Twitter", url: "https://twitter.com/rellyson1/" },
+            { name: "Linkedin", url: "https://linkedin.com/in/rellyson-douglas/" }
         ]
     }
 
-    return res.render('about', {about})
+    return res.render('about', { about })
 })
 
 server.get('/portfolio', function (req, res) {
     return res.render('portfolio', {
         items: videos
     })
+})
+
+server.get('/video', function (req, res) {
+    const id = req.query.id
+
+    const video = videos.find(function (video) {
+        return video.id == id
+        // retorna verdadeiro para o índice que tem o video.id == const id, e, então a const video
+        // recebe todos os dados do índice retornado
+    })
+
+    if (!video) {
+        return res.send('Video not found!')
+    }
+
+    return res.render('video', { item: video })
 })
 
 server.listen(5000, function () {

@@ -3,7 +3,8 @@ module.exports = [
         id: "GykTLqODQuU",
         title: "Formulário Animado com JS puro e CSS Animation | Mayk Brito",
         duration: "57 min",
-        price: "Free"
+        price: "Free",
+        featured: true
     },
     {
         id: "2alg7MQ6_sI",
@@ -15,7 +16,8 @@ module.exports = [
         id: "TI4v4Y8yRjw",
         title: "Styles Grid Javascript | Mayk Brito",
         duration: "12 min",
-        price: "Free"
+        price: "Free",
+        featured: true
     },
     {
         id: "HN1UjzRSdBk",
@@ -33,6 +35,7 @@ module.exports = [
         id: "c7P03kkrEG8",
         title: "Configurando o VSCode para Node.js, React.js e React Native | Mayk Brito",
         duration: "22 min",
-        price: "Free"
+        price: "Free",
+        featured: true
     },
 ]
